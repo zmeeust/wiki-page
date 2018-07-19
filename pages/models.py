@@ -7,7 +7,12 @@ from django.dispatch import receiver
 class Page(models.Model):
     """Page model definition"""
     created = models.DateTimeField(auto_now_add=True)
-    current_version = models.OneToOneField('pages.Version', on_delete=models.CASCADE, blank=True, null=True)
+    current_version = models.OneToOneField(
+        'pages.Version', 
+        on_delete=models.CASCADE, 
+        blank=True, 
+        null=True
+        )
 
     def __str__(self):
         return 'Wiki page - {}'.format(self.pk)
@@ -25,10 +30,17 @@ class Version(models.Model):
     text = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     version = models.IntegerField(default=0)
-    current_page = models.ForeignKey(Page, on_delete=models.CASCADE, related_name='version')
+    current_page = models.ForeignKey(
+        Page, 
+        on_delete=models.CASCADE, 
+        related_name='versions'
+        )
 
     def __str__(self):
-        return 'Wiki {} page version - {}'.format(self.current_page.pk, self.version)
+        return 'Wiki {} page version - {}'.format(
+                                self.current_page.pk, 
+                                self.version
+                                )
 
     class Meta:
         ordering = ['-version']

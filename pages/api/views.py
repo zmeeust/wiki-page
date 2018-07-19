@@ -27,7 +27,9 @@ class PageVersionDetail(generics.RetrieveAPIView):
     serializer_class = VersionSerializer
 
     def get_object(self):
-        return Version.objects.filter(current_page=Page.objects.get(pk=self.kwargs['pk'])).get(version=self.kwargs['version'])
+        return Version.objects.filter(
+            current_page=Page.objects.get(pk=self.kwargs['pk'])).get(version=self.kwargs['version']
+            )
 
 
 class PageCurrentVersion(generics.RetrieveAPIView):
