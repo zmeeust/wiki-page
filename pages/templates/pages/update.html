@@ -1,0 +1,8 @@
+<p>
+	<em><a href="{% url 'home' %}">Back home</a></em><br>
+</p>
+<form method="POST", action="">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type='submit' value='Save'>
+</form> 

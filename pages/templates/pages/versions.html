@@ -1,0 +1,10 @@
+<p>
+	<em><a href="{% url 'home' %}">Back home</a></em><br>
+</p>
+{% for version in versions %}
+  <h2>{{ version.title }}</h2>
+  <em>Version: </em>{{ version.version }}<br>
+  <em>Created: </em>{{ version.created }}<br>
+  <p>{{ version.text }}<br></p>
+  <p><a href="{% url 'change-version' pk=page.pk version=version.pk %}">Change to this version</a></p>
+{% endfor %}

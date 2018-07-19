@@ -1,0 +1,12 @@
+<p>
+	<em><a href="{% url 'home' %}">Back home</a></em><br>
+</p>
+<h2>{{ page.current_version.title }}</h2>
+<em>Version: </em>{{ page.current_version.version }}<br>
+<em>Created: </em>{{ page.created }}<br>
+<em>Updated: </em>{{ page.current_version.created }}<br>
+<p>{{ page.current_version.text }}</p>
+<p>
+  <em><a href="{% url 'page-update' page.pk %}">Update page</a></em><br>
+  <em><a href="{% url 'display-versions' page.pk %}">Change page version</a></em>
+</p>
